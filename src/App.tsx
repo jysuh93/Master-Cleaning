@@ -320,7 +320,7 @@ export default function App() {
                       </div>
                       <div>
                         <p className="text-xs text-slate-500 font-medium">전화 상담 및 현장 견적 문의</p>
-                        <p className="text-lg font-bold text-white">(323) 123-4567</p>
+                        <p className="text-lg font-bold text-white">010-7579-1778</p>
                       </div>
                     </div>
 
@@ -342,7 +342,7 @@ export default function App() {
                       </div>
                       <div>
                         <p className="text-xs text-slate-500 font-medium">본사 위치 안내</p>
-                        <p className="text-sm font-bold text-white">서울특별시 마포구 백범로 31, 비즈타워 7층</p>
+                        <p className="text-sm font-bold text-white">인천 계양구 동양동</p>
                       </div>
                     </div>
                   </div>
