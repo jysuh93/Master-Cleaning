@@ -1,0 +1,85 @@
+{
+  "entities": {
+    "Booking": {
+      "title": "Booking",
+      "description": "A premium cleaning service reservation made by a customer.",
+      "type": "object",
+      "properties": {
+        "name": {
+          "type": "string",
+          "minLength": 2,
+          "maxLength": 50,
+          "description": "Customer name"
+        },
+        "contact": {
+          "type": "string",
+          "minLength": 9,
+          "maxLength": 20,
+          "pattern": "^[0-9\\-]+$",
+          "description": "Customer contact number"
+        },
+        "service": {
+          "type": "string",
+          "enum": ["입주청소", "이사청소"],
+          "description": "Type of cleaning service"
+        },
+        "address": {
+          "type": "string",
+          "minLength": 5,
+          "maxLength": 200,
+          "description": "Cleaning location address"
+        },
+        "houseSize": {
+          "type": "number",
+          "description": "Size of the house in pyeong (평)"
+        },
+        "preferredDate": {
+          "type": "string",
+          "pattern": "^\\d{4}-\\d{2}-\\d{2}$",
+          "description": "Preferred cleaning date (YYYY-MM-DD)"
+        },
+        "preferredTime": {
+          "type": "string",
+          "pattern": "^\\d{2}:\\d{2}$",
+          "description": "Preferred start time (HH:MM)"
+        },
+        "notes": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Customer additional requests or notes"
+        },
+        "status": {
+          "type": "string",
+          "enum": ["예약대기", "예약완료", "진행중", "완료", "취소"],
+          "description": "Status of the reservation"
+        },
+        "adminMemo": {
+          "type": "string",
+          "maxLength": 1000,
+          "description": "Internal administrative notes"
+        },
+        "createdAt": {
+          "type": "string",
+          "description": "ISO timestamp when booking was created"
+        },
+        "updatedAt": {
+          "type": "string",
+          "description": "ISO timestamp when booking was last updated"
+        },
+        "userId": {
+          "type": "string",
+          "description": "Firebase user ID who made the booking, if logged in"
+        }
+      },
+      "required": ["name", "contact", "service", "address", "houseSize", "preferredDate", "preferredTime", "status"]
+    }
+  },
+  "firestore": {
+    "bookings": {
+      "schema": {
+        "$ref": "#/entities/Booking"
+      },
+      "description": "Collection of all cleaning service reservations."
+    }
+  }
+}

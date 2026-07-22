@@ -1,0 +1,26 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    
+    // Default Deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    match /bookings/{bookingId} {
+      allow read: if true;
+      allow create: if request.resource.data.status == '예약대기' && 
+                      (!('userId' in request.resource.data) || (request.auth != null && request.resource.data.userId == request.auth.uid)) &&
+                      request.resource.data.name is string &&
+                      request.resource.data.contact is string &&
+                      request.resource.data.address is string &&
+                      request.resource.data.preferredDate is string &&
+                      request.resource.data.preferredTime is string;
+      
+      allow update: if (request.auth != null && request.auth.token.email == 'juneyoungsuh93@gmail.com') || 
+                      (request.auth != null && 'userId' in resource.data && resource.data.userId == request.auth.uid && request.resource.data.status == '취소');
+      
+      allow delete: if request.auth != null && request.auth.token.email == 'juneyoungsuh93@gmail.com';
+    }
+  }
+}

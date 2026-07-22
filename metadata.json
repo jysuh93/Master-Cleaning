@@ -1,0 +1,6 @@
+{
+  "name": "Master Cleaning",
+  "description": "프리미엄 입주 및 이사 청소 서비스 예약 시스템과 관리자 대시보드",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}
